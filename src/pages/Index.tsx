@@ -33,55 +33,23 @@ const CoordinateCrosshair = ({ x, y, label }: { x: string; y: string; label: str
 const LogoMark = ({ size = 52 }: { size?: number }) => {
   return (
   <svg width={size} height={size} viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Coordinate grid — subtle */}
-    <line x1="0" y1="13" x2="52" y2="13" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
-    <line x1="0" y1="26" x2="52" y2="26" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
-    <line x1="0" y1="39" x2="52" y2="39" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
-    <line x1="13" y1="0" x2="13" y2="52" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
-    <line x1="26" y1="0" x2="26" y2="52" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
-    <line x1="39" y1="0" x2="39" y2="52" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
+    {/* Буква Г — вертикаль + горизонталь, образуют форму пилона и пролёта */}
+    {/* Вертикаль (пилон/стойка) */}
+    <rect x="8" y="8" width="7" height="36" fill="#1a4fa0" />
+    {/* Горизонталь верхняя (перекладина Г) */}
+    <rect x="8" y="8" width="28" height="7" fill="#1a4fa0" />
 
-    {/* === ROAD APPROACH (left & right) === */}
-    <line x1="0" y1="37" x2="7" y2="37" stroke="#1a4fa0" strokeWidth="2.5" strokeLinecap="round" />
-    <line x1="45" y1="37" x2="52" y2="37" stroke="#1a4fa0" strokeWidth="2.5" strokeLinecap="round" />
+    {/* Арка-пролёт — абстрактная дуга от конца перекладины вниз */}
+    <path d="M36 15 Q44 15 44 36" stroke="#1a4fa0" strokeWidth="4" fill="none" strokeLinecap="round" />
 
-    {/* === BRIDGE DECK === */}
-    <line x1="7" y1="37" x2="45" y2="37" stroke="#1a4fa0" strokeWidth="2.5" />
+    {/* Дорога — горизонтальная линия у основания */}
+    <line x1="4" y1="44" x2="48" y2="44" stroke="#1a4fa0" strokeWidth="3.5" strokeLinecap="round" />
 
-    {/* === LEFT PYLON === */}
-    <line x1="15" y1="37" x2="15" y2="10" stroke="#1a4fa0" strokeWidth="2.2" strokeLinecap="round" />
-    {/* pylon cap */}
-    <rect x="12.5" y="9" width="5" height="2" rx="0.5" fill="#1a4fa0" />
-
-    {/* === RIGHT PYLON === */}
-    <line x1="37" y1="37" x2="37" y2="10" stroke="#1a4fa0" strokeWidth="2.2" strokeLinecap="round" />
-    {/* pylon cap */}
-    <rect x="34.5" y="9" width="5" height="2" rx="0.5" fill="#1a4fa0" />
-
-    {/* === MAIN CABLE (catenary) === */}
-    <path d="M15 11 Q26 20 37 11" stroke="#f97316" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-
-    {/* === HANGERS (vertical suspenders from cable to deck) === */}
-    {/* Left side */}
-    <line x1="18" y1="18.5" x2="18" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
-    <line x1="21" y1="21.2" x2="21" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
-    <line x1="24" y1="22.5" x2="24" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
-    {/* Right side */}
-    <line x1="34" y1="18.5" x2="34" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
-    <line x1="31" y1="21.2" x2="31" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
-    <line x1="28" y1="22.5" x2="28" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
-
-    {/* === ANCHOR CABLES === */}
-    <line x1="15" y1="11" x2="7" y2="37" stroke="#f97316" strokeWidth="1" strokeOpacity="0.5" strokeLinecap="round" />
-    <line x1="37" y1="11" x2="45" y2="37" stroke="#f97316" strokeWidth="1" strokeOpacity="0.5" strokeLinecap="round" />
-
-    {/* === PYLON FOUNDATIONS === */}
-    <rect x="12" y="37" width="6" height="4" rx="0.5" fill="#1a4fa0" opacity="0.5" />
-    <rect x="34" y="37" width="6" height="4" rx="0.5" fill="#1a4fa0" opacity="0.5" />
-
-    {/* === GEODETIC POINT at top of cable === */}
-    <circle cx="26" cy="15.5" r="2.2" fill="#f97316" />
-    <circle cx="26" cy="15.5" r="4.5" stroke="#f97316" strokeWidth="0.7" strokeOpacity="0.45" fill="none" />
+    {/* Геодезическая точка — акцент оранжевым в углу Г */}
+    <circle cx="36" cy="15" r="4" fill="#f97316" />
+    {/* Маленький крест вокруг точки — отсылка к геодезии */}
+    <line x1="36" y1="10" x2="36" y2="20" stroke="#f97316" strokeWidth="1" strokeOpacity="0.4" />
+    <line x1="31" y1="15" x2="41" y2="15" stroke="#f97316" strokeWidth="1" strokeOpacity="0.4" />
   </svg>
   );
 };
