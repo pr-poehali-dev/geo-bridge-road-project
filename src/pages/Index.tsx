@@ -32,34 +32,29 @@ const CoordinateCrosshair = ({ x, y, label }: { x: string; y: string; label: str
 
 const LogoMark = ({ size = 52 }: { size?: number }) => {
   return (
-  <svg width={size} height={size} viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     {/*
-      Буква «Г» нарисована дорогой и мостом:
-      — горизонталь = мост (толстая линия-дорога + арка над ней)
-      — вертикаль   = дорога вниз (две полосы с разметкой)
+      КОНЦЕПЦИЯ:
+      Два пересекающихся элемента образуют «Г»:
+      1. Синий вертикальный блок — пилон/колонна (строительство)
+      2. Оранжевая горизонтальная трапеция — дорога в перспективе (геодезия)
+      Пересечение = точка притяжения, узнаваемый знак компании
     */}
 
-    {/* === ГОРИЗОНТАЛЬ: мост === */}
-    {/* Полотно моста — толстая дорога */}
-    <line x1="10" y1="14" x2="46" y2="14" stroke="#1a4fa0" strokeWidth="5" strokeLinecap="square" />
-    {/* Арка моста — над полотном */}
-    <path d="M14 14 Q28 2 42 14" stroke="#f97316" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-    {/* Вертикальные подвески от арки к полотну */}
-    <line x1="21" y1="8.5" x2="21" y2="14" stroke="#f97316" strokeWidth="1.2" strokeOpacity="0.7" />
-    <line x1="28" y1="5.5" x2="28" y2="14" stroke="#f97316" strokeWidth="1.2" strokeOpacity="0.7" />
-    <line x1="35" y1="8.5" x2="35" y2="14" stroke="#f97316" strokeWidth="1.2" strokeOpacity="0.7" />
-    {/* Геодезическая точка — вершина арки */}
-    <circle cx="28" cy="4" r="2.5" fill="#f97316" />
+    {/* Вертикаль — синий пилон, строгий прямоугольник */}
+    <rect x="6" y="6" width="11" height="36" fill="#1a4fa0" />
 
-    {/* === ВЕРТИКАЛЬ: дорога вниз === */}
-    {/* Левая полоса дороги */}
-    <line x1="17" y1="14" x2="17" y2="50" stroke="#1a4fa0" strokeWidth="2.2" strokeLinecap="square" />
-    {/* Правая полоса дороги */}
-    <line x1="23" y1="14" x2="23" y2="50" stroke="#1a4fa0" strokeWidth="2.2" strokeLinecap="square" />
-    {/* Осевая разметка — пунктир */}
-    <line x1="20" y1="20" x2="20" y2="25" stroke="#f97316" strokeWidth="1.2" strokeOpacity="0.6" strokeLinecap="round" />
-    <line x1="20" y1="30" x2="20" y2="35" stroke="#f97316" strokeWidth="1.2" strokeOpacity="0.6" strokeLinecap="round" />
-    <line x1="20" y1="40" x2="20" y2="45" stroke="#f97316" strokeWidth="1.2" strokeOpacity="0.6" strokeLinecap="round" />
+    {/* Горизонталь — дорога-трапеция в перспективе, оранжевая */}
+    {/* Широкая слева (ближний план), сужается вправо (даль) */}
+    <path d="M6 6 L44 10 L44 17 L6 17 Z" fill="#f97316" />
+
+    {/* Перспективные линии сходятся вправо — намёк на горизонт */}
+    <line x1="17" y1="10.8" x2="44" y2="10" stroke="white" strokeWidth="0.6" strokeOpacity="0.3" />
+    <line x1="17" y1="13.5" x2="44" y2="13.5" stroke="white" strokeWidth="0.6" strokeOpacity="0.3" />
+
+    {/* Геодезическая точка — белый круг на пересечении */}
+    <circle cx="17" cy="11.5" r="3.2" fill="white" />
+    <circle cx="17" cy="11.5" r="1.4" fill="#1a4fa0" />
   </svg>
   );
 };
