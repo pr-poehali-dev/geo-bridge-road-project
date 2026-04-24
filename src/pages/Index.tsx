@@ -30,28 +30,61 @@ const CoordinateCrosshair = ({ x, y, label }: { x: string; y: string; label: str
   </div>
 );
 
-const LogoMark = () => (
-  <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Grid lines */}
-    <line x1="0" y1="16" x2="52" y2="16" stroke="#f97316" strokeWidth="0.6" strokeOpacity="0.4" />
-    <line x1="0" y1="26" x2="52" y2="26" stroke="#f97316" strokeWidth="0.6" strokeOpacity="0.4" />
-    <line x1="0" y1="36" x2="52" y2="36" stroke="#f97316" strokeWidth="0.6" strokeOpacity="0.4" />
-    <line x1="16" y1="0" x2="16" y2="52" stroke="#f97316" strokeWidth="0.6" strokeOpacity="0.4" />
-    <line x1="26" y1="0" x2="26" y2="52" stroke="#f97316" strokeWidth="0.6" strokeOpacity="0.4" />
-    <line x1="36" y1="0" x2="36" y2="52" stroke="#f97316" strokeWidth="0.6" strokeOpacity="0.4" />
-    {/* Bridge arch */}
-    <path d="M6 38 Q26 10 46 38" stroke="#1a4fa0" strokeWidth="3" fill="none" strokeLinecap="round" />
-    {/* Bridge road */}
-    <line x1="6" y1="38" x2="46" y2="38" stroke="#1a4fa0" strokeWidth="3" strokeLinecap="round" />
-    {/* Bridge verticals */}
-    <line x1="18" y1="38" x2="18" y2="25" stroke="#1a4fa0" strokeWidth="1.5" strokeOpacity="0.7" />
-    <line x1="26" y1="38" x2="26" y2="18" stroke="#1a4fa0" strokeWidth="1.5" strokeOpacity="0.7" />
-    <line x1="34" y1="38" x2="34" y2="25" stroke="#1a4fa0" strokeWidth="1.5" strokeOpacity="0.7" />
-    {/* Coordinate dot */}
-    <circle cx="26" cy="18" r="3" fill="#f97316" />
-    <circle cx="26" cy="18" r="6" stroke="#f97316" strokeWidth="0.8" strokeOpacity="0.5" fill="none" />
+const LogoMark = ({ size = 52 }: { size?: number }) => {
+  return (
+  <svg width={size} height={size} viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Coordinate grid — subtle */}
+    <line x1="0" y1="13" x2="52" y2="13" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
+    <line x1="0" y1="26" x2="52" y2="26" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
+    <line x1="0" y1="39" x2="52" y2="39" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
+    <line x1="13" y1="0" x2="13" y2="52" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
+    <line x1="26" y1="0" x2="26" y2="52" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
+    <line x1="39" y1="0" x2="39" y2="52" stroke="#f97316" strokeWidth="0.4" strokeOpacity="0.25" />
+
+    {/* === ROAD APPROACH (left & right) === */}
+    <line x1="0" y1="37" x2="7" y2="37" stroke="#1a4fa0" strokeWidth="2.5" strokeLinecap="round" />
+    <line x1="45" y1="37" x2="52" y2="37" stroke="#1a4fa0" strokeWidth="2.5" strokeLinecap="round" />
+
+    {/* === BRIDGE DECK === */}
+    <line x1="7" y1="37" x2="45" y2="37" stroke="#1a4fa0" strokeWidth="2.5" />
+
+    {/* === LEFT PYLON === */}
+    <line x1="15" y1="37" x2="15" y2="10" stroke="#1a4fa0" strokeWidth="2.2" strokeLinecap="round" />
+    {/* pylon cap */}
+    <rect x="12.5" y="9" width="5" height="2" rx="0.5" fill="#1a4fa0" />
+
+    {/* === RIGHT PYLON === */}
+    <line x1="37" y1="37" x2="37" y2="10" stroke="#1a4fa0" strokeWidth="2.2" strokeLinecap="round" />
+    {/* pylon cap */}
+    <rect x="34.5" y="9" width="5" height="2" rx="0.5" fill="#1a4fa0" />
+
+    {/* === MAIN CABLE (catenary) === */}
+    <path d="M15 11 Q26 20 37 11" stroke="#f97316" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+
+    {/* === HANGERS (vertical suspenders from cable to deck) === */}
+    {/* Left side */}
+    <line x1="18" y1="18.5" x2="18" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
+    <line x1="21" y1="21.2" x2="21" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
+    <line x1="24" y1="22.5" x2="24" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
+    {/* Right side */}
+    <line x1="34" y1="18.5" x2="34" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
+    <line x1="31" y1="21.2" x2="31" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
+    <line x1="28" y1="22.5" x2="28" y2="37" stroke="#1a4fa0" strokeWidth="0.9" strokeOpacity="0.7" />
+
+    {/* === ANCHOR CABLES === */}
+    <line x1="15" y1="11" x2="7" y2="37" stroke="#f97316" strokeWidth="1" strokeOpacity="0.5" strokeLinecap="round" />
+    <line x1="37" y1="11" x2="45" y2="37" stroke="#f97316" strokeWidth="1" strokeOpacity="0.5" strokeLinecap="round" />
+
+    {/* === PYLON FOUNDATIONS === */}
+    <rect x="12" y="37" width="6" height="4" rx="0.5" fill="#1a4fa0" opacity="0.5" />
+    <rect x="34" y="37" width="6" height="4" rx="0.5" fill="#1a4fa0" opacity="0.5" />
+
+    {/* === GEODETIC POINT at top of cable === */}
+    <circle cx="26" cy="15.5" r="2.2" fill="#f97316" />
+    <circle cx="26" cy="15.5" r="4.5" stroke="#f97316" strokeWidth="0.7" strokeOpacity="0.45" fill="none" />
   </svg>
-);
+  );
+};
 
 const services = [
   {
